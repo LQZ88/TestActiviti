@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.com.service.dao.userInfoMapper">
+  <resultMap id="BaseResultMap" type="com.com.model.userInfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="LOGIN_ACCOUNT" jdbcType="VARCHAR" property="loginAccount" />
+    <result column="LOGIN_PASSWORD" jdbcType="VARCHAR" property="loginPassword" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="MOBILE" jdbcType="VARCHAR" property="mobile" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="ISAVALIABLE" jdbcType="VARCHAR" property="isavaliable" />
+    <result column="USER_CODE" jdbcType="VARCHAR" property="userCode" />
+    <result column="MARJOR_TYPE" jdbcType="VARCHAR" property="marjorType" />
+    <result column="TELL" jdbcType="VARCHAR" property="tell" />
+  </resultMap>
+  <sql id="Base_List">
+    ID, USER_NAME, LOGIN_ACCOUNT, LOGIN_PASSWORD, CREATE_TIME, UPDATE_TIME, MOBILE, EMAIL, 
+    ISAVALIABLE, USER_CODE, MARJOR_TYPE, TELL
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_List" />
+    from userinfo where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryList" parameterType="com.com.model.userInfo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_List" />
+    from userinfo
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from userinfo where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.com.model.userInfo">
+    insert into userinfo (ID, USER_NAME, LOGIN_ACCOUNT, 
+      LOGIN_PASSWORD, CREATE_TIME, UPDATE_TIME, 
+      MOBILE, EMAIL, ISAVALIABLE, 
+      USER_CODE, MARJOR_TYPE, TELL
+      )
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{loginAccount,jdbcType=VARCHAR}, 
+      #{loginPassword,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{isavaliable,jdbcType=VARCHAR}, 
+      #{userCode,jdbcType=VARCHAR}, #{marjorType,jdbcType=VARCHAR}, #{tell,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.com.model.userInfo">
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="loginAccount != null">
+        LOGIN_ACCOUNT,
+      </if>
+      <if test="loginPassword != null">
+        LOGIN_PASSWORD,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="mobile != null">
+        MOBILE,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="isavaliable != null">
+        ISAVALIABLE,
+      </if>
+      <if test="userCode != null">
+        USER_CODE,
+      </if>
+      <if test="marjorType != null">
+        MARJOR_TYPE,
+      </if>
+      <if test="tell != null">
+        TELL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginAccount != null">
+        #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null">
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isavaliable != null">
+        #{isavaliable,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="marjorType != null">
+        #{marjorType,jdbcType=VARCHAR},
+      </if>
+      <if test="tell != null">
+        #{tell,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.com.model.userInfo">
+    update userinfo
+    <set>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginAccount != null">
+        LOGIN_ACCOUNT = #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null">
+        LOGIN_PASSWORD = #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isavaliable != null">
+        ISAVALIABLE = #{isavaliable,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        USER_CODE = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="marjorType != null">
+        MARJOR_TYPE = #{marjorType,jdbcType=VARCHAR},
+      </if>
+      <if test="tell != null">
+        TELL = #{tell,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.com.model.userInfo">
+    update userinfo
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      LOGIN_ACCOUNT = #{loginAccount,jdbcType=VARCHAR},
+      LOGIN_PASSWORD = #{loginPassword,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ISAVALIABLE = #{isavaliable,jdbcType=VARCHAR},
+      USER_CODE = #{userCode,jdbcType=VARCHAR},
+      MARJOR_TYPE = #{marjorType,jdbcType=VARCHAR},
+      TELL = #{tell,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
